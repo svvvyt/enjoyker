@@ -34,13 +34,12 @@ export const useGame = () => {
     const result: GameResult = {
       time,
       rank: getRankByTime(time),
-      spellsCast: completedSpells,
     };
     setGameResult(result);
     setGameStatus('finished');
     setCurrentSpell(null);
     setPressedKeys([]);
-  }, [time, completedSpells]);
+  }, [time]);
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
@@ -86,7 +85,7 @@ export const useGame = () => {
 
   // Timer effect
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: any;
 
     if (gameStatus === 'playing') {
       interval = setInterval(() => {
