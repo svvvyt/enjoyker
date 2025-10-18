@@ -1,0 +1,59 @@
+.game-layout {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1400px;
+  height: 85vh;
+  min-height: 700px;
+  max-height: 900px;
+  align-items: stretch;
+  /* Изменено с start на stretch */
+  justify-items: center;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+/* Общие стили для всех панелей */
+.left-panel,
+.center-panel,
+.right-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Центральная панель занимает больше места */
+.center-panel {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  /* Добавлено */
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    gap: 1rem;
+    align-items: stretch;
+    /* Также изменить для мобильной версии */
+  }
+
+  .left-panel,
+  .center-panel,
+  .right-panel {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+  }
+
+  .center-panel {
+    order: -1;
+  }
+}

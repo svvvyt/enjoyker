@@ -1,0 +1,248 @@
+.spells-panel {
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  min-width: 300px;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spells-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.panel-title {
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.panel-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 2px;
+}
+
+.panel-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--surface-light);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.panel-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--secondary), var(--accent));
+}
+
+.order-hint {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.order-hint::before {
+  content: '💡';
+  font-size: 1rem;
+}
+
+.spells-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.spell-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem;
+  background: var(--surface-light);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.spell-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: left 0.5s;
+}
+
+.spell-item:hover::before {
+  left: 100%;
+}
+
+.spell-item:hover {
+  border-color: var(--primary);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.spell-panel-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.spell-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%);
+  padding: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.spell-item:hover .spell-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+.spell-name {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.spell-item:hover .spell-name {
+  color: var(--primary);
+}
+
+.spell-combination {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.spell-key {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.spell-item:hover .spell-key {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.spell-key.invoke {
+  background: linear-gradient(135deg, var(--secondary) 0%, #ff6b6b 100%);
+  border-color: var(--secondary);
+  margin-left: 0.5rem;
+}
+
+.spell-key-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(1.2);
+}
+
+/* Scrollbar styling */
+.spells-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.spells-list::-webkit-scrollbar-track {
+  background: var(--surface);
+  border-radius: 3px;
+}
+
+.spells-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 3px;
+}
+
+.spells-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-dark) 100%);
+}
+
+@media (max-width: 768px) {
+  .spells-panel {
+    min-width: auto;
+    max-height: 500px;
+    padding: 1.5rem;
+  }
+
+  .spell-item {
+    padding: 1rem;
+  }
+
+  .spell-panel-info {
+    gap: 0.8rem;
+  }
+
+  .spell-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .spell-name {
+    font-size: 0.85rem;
+  }
+
+  .spell-key {
+    width: 30px;
+    height: 30px;
+  }
+
+  .spell-key-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
